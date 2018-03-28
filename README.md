@@ -8,7 +8,7 @@ These agents use two important algorithms: Policy and Value Iteration, which are
 
 The environment in this question is this 6x6 grid maze:
 
-![6x6 Maze](https://github.com/jirehcwe/IntelligentAgents/blob/master/6x6%20maze.png)
+![6x6 Maze](https://github.com/jirehcwe/IntelligentAgents/blob/master/diagrams/6x6%20maze.png)
 
 The agent uses a transition model where moving in the intended direction has a probability of 0.8 and moving in right angles to the intended direction has probabilities of 0.1 each.
 
@@ -16,7 +16,7 @@ There is a more complicated maze which yields different optimal policies for val
 
 The environment is as such. (optimal policy overlaid)
 
-![12x12 Maze](https://github.com/jirehcwe/IntelligentAgents/blob/master/12x12%20maze.png)
+![12x12 Maze](https://github.com/jirehcwe/IntelligentAgents/blob/master/diagrams/12x12%20maze.png)
 
 The diagrams were done in draw.io.
 
@@ -28,7 +28,7 @@ The code can be easily editted for your own mazes and environments. There is als
 I used JFreeChart to draw the utility graphs so you might need to install those dependencies in your build path.
 
 You can get super wacky graphs such as these:
-![12x12 Utility graph](https://github.com/jirehcwe/IntelligentAgents/blob/master/12x12%20Utilities%20graph.png)
+![12x12 Utility graph](https://github.com/jirehcwe/IntelligentAgents/blob/master/diagrams/12x12%20Utilities%20graph.png)
 
 That was from the 12x12 maze. 
 
