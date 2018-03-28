@@ -148,13 +148,17 @@ public class Agent {
 			}
 		}
 		
+		if(currentIteration % 10 ==0)
 		System.out.println("Finishing iteration " + currentIteration + " for value iteration.");
 		
 		graphics.AddIterationDataToDataset(uOriginal.clone(), currentIteration, env);			//Add utility data to grapher for this iteration
 		
 		currentIteration++;																	//prints current iteration number
-		} while (maxChangeInUtil >= minDelta);			//termination condition for iteration.
-			
+		} while (maxChangeInUtil >= minDelta);												//termination condition for iteration.
+		
+		currentIteration--;
+		System.out.println("Finishing iteration " + currentIteration + " for value iteration.");
+		
 		System.out.println("Finished value iteration.");
 		return optimalPolicy;																	//returns U.
 	}
@@ -284,7 +288,7 @@ public class Agent {
 			} else if (env.rewards[row][col-1] == AgentApp.AWALLSQ){					//if the left direction results in collision with the wall
 				unintendedProb+= uOriginal[row][col]*tModel.unintendedProb;			//add the current tile utility*unintended Probability of 0.1 to the total unintended probability
 			} else { 																//the unintended direction is clear
-				unintendedProb+= uOriginal[row][col-1]*tModel.unintendedProb;		//add the LEFT tile utility*unintended Probability of 0.1 to the total unintended probability
+				unintendedProb+= uOriginal[row][col-1]*tModel.unintendedProb;			//add the LEFT tile utility*unintended Probability of 0.1 to the total unintended probability
 			}
 				
 				
@@ -293,7 +297,7 @@ public class Agent {
 			} else if (env.rewards[row][col+1] == AgentApp.AWALLSQ){					//if the right direction results in collision with the wall
 				unintendedProb+= uOriginal[row][col]*tModel.unintendedProb;			//add the current tile utility*unintended Probability of 0.1 to the total unintended probability
 			} else { 																//the unintended direction is clear
-				unintendedProb+= uOriginal[row][col+1]*tModel.unintendedProb;		//add the RIGHT tile utility*unintended Probability of 0.1 to the total unintended probability
+				unintendedProb+= uOriginal[row][col+1]*tModel.unintendedProb;			//add the RIGHT tile utility*unintended Probability of 0.1 to the total unintended probability
 			}
 			
 			return unintendedProb;													//return the combined total of left and right weighted probability and utility
@@ -308,7 +312,7 @@ public class Agent {
 				unintendedProb+= uOriginal[row][col]*tModel.unintendedProb;			//add the current tile utility*unintended Probability of 0.1 to the total unintended probability
 			} else { 																//the unintended direction is clear
 
-				unintendedProb+= uOriginal[row-1][col]*tModel.unintendedProb;		//add the ABOVE tile utility*unintended Probability of 0.1 to the total unintended probability
+				unintendedProb+= uOriginal[row-1][col]*tModel.unintendedProb;			//add the ABOVE tile utility*unintended Probability of 0.1 to the total unintended probability
 			}
 				
 				
@@ -317,7 +321,7 @@ public class Agent {
 			} else if (env.rewards[row+1][col] == 0){								//if the down direction results in collision with the wall
 				unintendedProb+= uOriginal[row][col]*tModel.unintendedProb;			//add the current tile utility*unintended Probability of 0.1 to the total unintended probability
 			} else { 																//the unintended direction is clear
-				unintendedProb+= uOriginal[row+1][col]*tModel.unintendedProb;		//add the BELOW tile utility*unintended Probability of 0.1 to the total unintended probability
+				unintendedProb+= uOriginal[row+1][col]*tModel.unintendedProb;			//add the BELOW tile utility*unintended Probability of 0.1 to the total unintended probability
 			}
 			
 			return unintendedProb;													//return the combined total of left and right weighted probability and utility
@@ -354,12 +358,12 @@ public class Agent {
 					} else {
 					
 						try {
-							float maxUtil = SumMaxUtility(row, col);					//find maxUtil of that state looking ahead and find policyDefinedUtil of 
-																						//state looking ahead using the policy as the action
+							float maxUtil = SumMaxUtility(row, col);							//find maxUtil of that state looking ahead and find policyDefinedUtil of 
+																							//state looking ahead using the policy as the action
 							float policyDefinedUtil = IntendedUtility(row, col, optimalPolicy[row][col] ) + UnintendedUtility(row, col, optimalPolicy[row][col]); //this uses the previous functions
 								if (maxUtil > policyDefinedUtil) {							//if the maximum utility exceeds the policyDefined one, we should update our policy.
-								optimalPolicy[row][col] = ActionOfMaxUtility(row, col);	//this corrects the current policy by assigning the action giving the max utility.
-								isUnchanged = false;									//the policy has changed.
+								optimalPolicy[row][col] = ActionOfMaxUtility(row, col);		//this corrects the current policy by assigning the action giving the max utility.
+								isUnchanged = false;											//the policy has changed.
 								}
 							} catch (Exception e) {
 								e.printStackTrace();
@@ -369,16 +373,14 @@ public class Agent {
 				}
 			}
 			System.out.println("Policy Iteration #"+ iterations);
-			iterations++;														//next iteration		
-//			PrintMaxUtility();
-//			PrintOptimalPolicy();
-//			System.out.println();
-		} while (isUnchanged == false);											//while policy is unchanged, continue to iterate
+			iterations++;																//next iteration		
+
+		} while (isUnchanged == false);													//while policy is unchanged, continue to iterate
 		
 										
 		
 		
-		return optimalPolicy;													//return the optimal policy
+		return optimalPolicy;															//return the optimal policy
 	}	
 	
 	private float[][] PolicyEvaluation(float discount, int k){							//policy evaluation takes the current policy and calculates new utilities of the states if the policy were to be executed k times.
@@ -392,13 +394,13 @@ public class Agent {
 		}
 				
 		
-		for(int i=0;i<k;i++) {													//run simplified value iteration k times
+		for(int i=0;i<k;i++) {															//run simplified value iteration k times
 				
 			
 			
 			for (int row = 0; row < env.rows; row++) {
 				for (int col = 0; col < env.columns; col++) {							//for each state
-					if (env.rewards[row][col] == 0) {								//if wall, ignore calculation
+					if (env.rewards[row][col] == 0) {									//if wall, ignore calculation
 						
 					} else {
 						try {

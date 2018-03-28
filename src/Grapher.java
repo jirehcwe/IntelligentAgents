@@ -29,7 +29,7 @@ public class Grapher extends JPanel{
 		
 		for (int row =0;row< env.rows;row++ ) {
     			for (int col = 0; col<env.columns;col++) {
-    			states[row][col] = new XYSeries(col + "," + row);
+    			states[row][col] = new XYSeries(col + "," + row);								
     			}
 		}
 	}
