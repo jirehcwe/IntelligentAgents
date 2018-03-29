@@ -2,11 +2,11 @@
 
 This is a Java project based on the pseudocode written in Artificial Intelligence: A Modern Approach by Stuart Russell and Peter Norvig.
 
-It looks at agent described in Chapter 16 and 17 of the book, agents that exist in Mazeworld.
+It looks at agents described in Chapter 16 and 17 of the book, agents that exist in Mazeworld.
 
 These agents use two important algorithms: Policy and Value Iteration, which are implemented here.
 
-The environment in this question is this 6x6 grid maze:
+The environment in this instance is this 6x6 grid maze:
 
 ![6x6 Maze](https://github.com/jirehcwe/IntelligentAgents/blob/master/diagrams/6x6%20maze.png)
 
@@ -22,6 +22,8 @@ The diagrams were done in draw.io.
 
 
 The code can be easily editted for your own mazes and environments. There is also a random environment generator (part of the Environment class as a constructor).
+
+I hope to learn more about intelligent agents and apply them to game design in the future.
 
 # Additional Details
 
