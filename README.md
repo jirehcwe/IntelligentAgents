@@ -1,4 +1,4 @@
-# Intelligent Agents using Value and Policy Iteration
+# Intelligent Agents In Mazeworld using Value and Policy Iteration
 
 This is a Java project based on the pseudocode written in Artificial Intelligence: A Modern Approach by Stuart Russell and Peter Norvig.
 
