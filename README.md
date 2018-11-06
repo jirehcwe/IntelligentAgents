@@ -20,20 +20,27 @@ The environment is as such. (optimal policy overlaid)
 
 The diagrams were done in draw.io.
 
+# Code
 
-The code can be easily editted for your own mazes and environments. There is also a random environment generator (part of the Environment class as a constructor).
+Environment.java simply is a data container for the environment you create. It also has helper functions to print the environment to the console. (PrintEnvironment()) You simply create environments by inputting the size of the environment into the constructor (the environment is a square).
 
-I hope to learn more about intelligent agents and apply them to game design in the future.
+Grapher.java helps to plot graphs like those shown below.
+
+It is implemented in BonusAgentApp.java and AgentApp.java as CreateGraph().
+
+TransitionModel is another abstraction to allow easy changing of the transition model of the agent.
+
+Finally, the agent itself in Agent.java. This agent implements both policy and value iteration functions and returns an appropriate 2D action array telling us the optimal policy calculated. There are also a few helper functions that help keep the main function more concise.
+
+The code can be easily editted for your own mazes and environments. 
+
+I hope to learn more about intelligent agents and apply them to game design in the future!
 
 # Additional Details
 
 I used JFreeChart to draw the utility graphs so you might need to install those dependencies in your build path.
 
-You can get super wacky graphs such as these:
+You can get graphs such as these:
 ![12x12 Utility graph](https://github.com/jirehcwe/IntelligentAgents/blob/master/diagrams/12x12%20Utilities%20graph.png)
 
-That was from the 12x12 maze. 
-
-# Further Questions
-
-If you have questions, you can email me at jireh_cwe@hotmail.com, I'll be happy to answer them!
+That was from the 12x12 maze. If you look at the red line (last one to converge), it is the 11,11 square, which is expected since the information takes the longest to propagate to that square.
